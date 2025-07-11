@@ -2,7 +2,7 @@
 
 const fetchUserDetails = async () => {
     try {
-      const response = await fetch('http://localhost:8080/api/user-details', {
+      const response = await fetch('https://ecommerce-mern-44aj.onrender.com/api/user-details', {
         method: 'GET',
         credentials: 'include',
       });
