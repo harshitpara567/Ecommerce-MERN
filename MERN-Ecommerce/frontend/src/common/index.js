@@ -1,5 +1,5 @@
 // src/common/SummaryApi.js
-const backendDomain = "https://ecommerce-mern-backend-fcbw.onrender.com"; // Make sure this matches your backend URL
+const backendDomain = "http://localhost:8080"; // Make sure this matches your backend URL
 
 const SummaryApi = {
   signUP: {
