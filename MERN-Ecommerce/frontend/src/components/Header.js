@@ -64,12 +64,18 @@ const Header = () => {
   };
 
   const toggleDropdown = () => {
-    setIsDropdownOpen(prev => !prev);
+    setIsDropdownOpen(prev => {
+      console.log('Profile dropdown toggled:', !prev); // Debug log
+      return !prev;
+    });
     if (!isDropdownOpen) setIsHamburgerOpen(false);
   };
 
   const toggleHamburger = () => {
-    setIsHamburgerOpen(prev => !prev);
+    setIsHamburgerOpen(prev => {
+      console.log('Hamburger toggled:', !prev); // Debug log
+      return !prev;
+    });
     if (!isHamburgerOpen) setIsDropdownOpen(false);
   };
 
@@ -144,12 +150,11 @@ const Header = () => {
           </div>
 
           {/* Profile Dropdown */}
-          <div className="cursor-pointer relative flex justify-center" ref={dropdownRef}>
-            <button
-              onClick={toggleDropdown}
+          <div className="cursor-pointer relative flex justify-center">
+            <Link
+              to="/myprofile"
               className="flex items-center justify-center focus:outline-none group"
               aria-label="User menu"
-              aria-expanded={isDropdownOpen}
             >
               {profilePicURL ? (
                 <div className="relative">
@@ -164,14 +169,7 @@ const Header = () => {
                   <FaRegCircleUser className="text-2xl" />
                 </div>
               )}
-            </button>
-
-            {/* Dropdown Content */}
-            {isDropdownOpen && (
-              <div className="absolute right-0 mt-3 w-72 bg-white shadow-2xl rounded-xl overflow-hidden z-50 transform origin-top-right transition-all duration-200 ease-out top-full ring-1 ring-black ring-opacity-5 border border-gray-100">
-                {/* ... (keep existing dropdown content) ... */}
-              </div>
-            )}
+            </Link>
           </div>
 
           {/* Cart */}
@@ -228,7 +226,26 @@ const Header = () => {
                       autoComplete="off"
                     />
                   </div>
-                  {/* ... (keep existing mobile menu links) ... */}
+                  <Link to="/" className="block px-6 py-3 text-gray-700 hover:bg-red-50">
+                    <MdHome className="inline mr-2" /> Home
+                  </Link>
+                  <Link to="/products" className="block px-6 py-3 text-gray-700 hover:bg-red-50">
+                    <MdCategory className="inline mr-2" /> Products
+                  </Link>
+                  <Link to="/cart" className="block px-6 py-3 text-gray-700 hover:bg-red-50">
+                    <MdShoppingCart className="inline mr-2" /> Cart
+                  </Link>
+                  
+                 
+                  <Link to="/contact" className="block px-6 py-3 text-gray-700 hover:bg-red-50">
+                    <MdContactMail className="inline mr-2" /> Contact
+                  </Link>
+                  <button
+                    onClick={handleLogout}
+                    className="w-full text-left px-6 py-3 text-gray-700 hover:bg-red-50"
+                  >
+                    <MdLogout className="inline mr-2" /> Logout
+                  </button>
                 </div>
               </div>
             )}
